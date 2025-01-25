@@ -1,0 +1,9 @@
+.header {
+    align-items: left;
+    text-align: left;
+    font-family: cursive;
+}
+
+.header__heading {
+    font-size: 20px;
+}

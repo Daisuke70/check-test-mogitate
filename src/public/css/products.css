@@ -1,0 +1,5 @@
+.products-page__top {
+    display: flex;
+    justify-content: space-between;
+    background: gray;
+}
