@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\MogitateController;
+use App\Http\Controllers\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/products/register', function () {
+    return view('register');
 });
+
+Route::get('/products', [ProductsController::class, 'index']);
+Route::get('/products/register', [RegisterController::class, 'index']);
+Route::post('/products/register', [RegisterController::class, 'store']);

@@ -1,0 +1,57 @@
+.content {
+    background-color: #e6e6e6;
+}
+
+.register-form__heading{
+    text-align: center;
+}
+
+.register-form__inner{
+    display: flex;
+    justify-content: center;
+}
+
+.register-form__label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.register-form__input {
+    display: block;
+    padding: 8px 12px;
+    width: 700px;
+    height: px;
+    align-items: left;
+    color: #e6e6e6;
+}
+
+.register-form-image{
+    border: 1px solid;
+    width: 120px;
+}
+
+.register-form__season-inputs {
+    display: flex;
+    justify-content: left;
+}
+
+.register-form__season-option {
+    margin-right: 50px;
+}
+
+.contact-form__season-input {
+    position: absolute;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.contact-form__season-text {
+    display: flex;
+    align-items: center;
+}
+
+.register-form__textarea{
+    width: 720px;
+    resize: none;
+}
