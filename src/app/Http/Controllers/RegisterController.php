@@ -15,5 +15,6 @@ class RegisterController extends Controller
     {
         $Register = $request->only(['product', 'price', 'image', 'season', 'product-description']);
         return view('register');
+
     }
 }
