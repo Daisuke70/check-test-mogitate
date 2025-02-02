@@ -9,12 +9,10 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $guarded = [
-        'id',
-    ];
 
     public function seasons()
     {
-        return $this->belongsTo(Season::class);
+        return $this->belongsTo(Season::class,'product_season','product_id','season_id',);
     }
 }
+

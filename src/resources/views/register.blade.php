@@ -94,7 +94,7 @@
 
       <div class="register-form__group">
         <label class="register-form__label" for="product-description">
-          お問い合わせ内容<span class="register-form__required">必須</span>
+          商品説明<span class="register-form__required">必須</span>
         </label>
         <textarea class="register-form__textarea" name="product-description" id="" cols="30" rows="10"
           placeholder="商品の説明を入力">{{ old('product-description') }}</textarea>

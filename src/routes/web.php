@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MogitateController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SeasonController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,10 +13,6 @@ use App\Http\Controllers\RegisterController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/products/register', function () {
-    return view('register');
-});
 
-Route::get('/products', [ProductsController::class, 'index']);
-Route::get('/products/register', [RegisterController::class, 'index']);
-Route::post('/products/register', [RegisterController::class, 'store']);
+Route::get('/products', [ProductController::class, 'getProducts']);
+Route::get('/products/register', [SeasonController::class, 'getRegister']);
