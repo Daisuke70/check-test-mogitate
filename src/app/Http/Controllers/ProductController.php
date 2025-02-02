@@ -16,16 +16,16 @@ class ProductController extends Controller
 
     public function upload(ProductRequest $request)
     {
-        $dir = 'images';
+        $dir = 'image';
 
-        $file_name = $request->file('product_image')->getClientOriginalName();
-        $request->file('product_image')->storeAs('public/' . $dir, $file_name);
+        $file_name = $request->file('image')->getClientOriginalName();
+        $request->file('image')->storeAs('public/' . $dir, $file_name);
 
         $product_data = new Product();
-        $product_data->name= $_POST["product_name"];
-        $product_data->price= $_POST["product_price"];
+        $product_data->product= $_POST["product"];
+        $product_data->price= $_POST["price"];
         $product_data->image= 'storage/' . $dir . '/' . $file_name;
-        $product_data->description= $_POST["product_description"];
+        $product_data->description= $_POST["description"];
         $product_data->save();
 
         $products = Product::all();

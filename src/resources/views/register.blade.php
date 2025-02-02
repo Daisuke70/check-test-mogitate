@@ -9,7 +9,7 @@
   <h2 class="register-form__heading content__heading">商品登録</h2>
 
   <div class="register-form__inner">
-    <form class="register-form__form" action="/products/register" method="post" enctype="multipart/form-data">
+    <form class="register-form__form" action="/product/upload" method="post" enctype="multipart/form-data">
       @csrf
       <div class="register-form__group">
         <label class="register-form__label" for="product">商品名
@@ -40,8 +40,8 @@
           <span class="register-form__required">必須</span>
         </label>
         <label class="register-form-image__label" for="image">
-          <div class="register-form-image">ファイルを選択</div>
-          <input class="register-form-image__input" type="file" name="image" id="image" accept=".png, .jpeg" value="{{ old('image') }}" style="display:none">
+          <output id="list" class="image_output"></output>
+          <input type="file" id="image" class="image" name="image">
         </label>
         <p class="register-form__error-message">
           @error('image')
@@ -111,5 +111,32 @@
       </div>
     </form>
   </div>
+  <script>
+        document.getElementById('image').onchange = function(event){
+
+            initializeFiles();
+
+            var files = event.target.files;
+
+            for (var i = 0, f; f = files[i]; i++) {
+                var reader = new FileReader;
+                reader.readAsDataURL(f);
+
+                reader.onload = (function(theFile) {
+                    return function (e) {
+                        var div = document.createElement('div');
+                        div.className = 'reader_file';
+                        div.innerHTML += '<img class="reader_image" src="' + e.target.result + '" />';
+                        document.getElementById('list').insertBefore(div, null);
+                    }
+                })(f);
+            }
+        };
+
+        function initializeFiles() {
+            document.getElementById('list').innerHTML = '';
+        }
+
+    </script>
 </div>
 @endsection
