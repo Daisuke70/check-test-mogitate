@@ -1,5 +1,5 @@
-.products-page__top {
-    display: flex;
-    justify-content: space-between;
-    background: gray;
+
+svg.w-5.h-5 {
+    width: 30px;
+    height: 30px;
 }

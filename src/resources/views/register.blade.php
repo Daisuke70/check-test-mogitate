@@ -93,21 +93,21 @@
         </div>
 
       <div class="register-form__group">
-        <label class="register-form__label" for="product-description">
+        <label class="register-form__label" for="description">
           商品説明<span class="register-form__required">必須</span>
         </label>
-        <textarea class="register-form__textarea" name="product-description" id="" cols="30" rows="10"
-          placeholder="商品の説明を入力">{{ old('product-description') }}</textarea>
+        <textarea class="register-form__textarea" name="description" id="" cols="30" rows="10"
+          placeholder="商品の説明を入力">{{ old('description') }}</textarea>
         <p class="register-form__error-message">
-          @error('product-description')
+          @error('description')
           {{ $message }}
           @enderror
         </p>
       </div>
 
-      <div class="register-form__btn-inner">
-        <input class="register-form__back-btn btn" type="submit" value="戻る" name="back">
-        <input class="register-form__register-btn" type="submit" value="登録" name="register">
+      <div class="register-form__button-content">
+        <a href= "/products" class="back">戻る</a>
+        <button type="submit" class="button-register">登録</button>
       </div>
     </form>
   </div>
@@ -136,7 +136,6 @@
         function initializeFiles() {
             document.getElementById('list').innerHTML = '';
         }
-
     </script>
 </div>
 @endsection
