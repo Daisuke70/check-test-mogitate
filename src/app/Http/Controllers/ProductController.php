@@ -163,4 +163,10 @@ class ProductController extends Controller
         return view('products')->with(compact('sort','products','seasons'));
     }
 
+    public function getDetail($product_id)
+    {
+        $product = product::find($product_id);
+        $seasons = Season::all();
+        return view('detail', compact('product','seasons'));
+    }
 }
