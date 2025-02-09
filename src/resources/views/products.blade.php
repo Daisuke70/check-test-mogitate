@@ -15,30 +15,38 @@
                 <label class="select-label">価格順で表示</label>
                 <select class="select" name="sort" id="sort">
                     <option value="">価格で並べ替え</option>
-                    <option value="high-score" a href="{{ url('/products?sort=desc') }}">高い順に表示</option>
-                    <option value="low-score" a href="{{ url('/products?sort=asc') }}">低い順に表示</option>
+                    <option value="high_price">高い順に表示</option>
+                    <option value="low_price">低い順に表示</option>
                 </select>
         </form>
-        
+        @if (@isset($sort)&& $sort != "")
+            <div class="sort_contents">
+                <p class="searched_data">{{$sort}}</p>
+                    <a href="/products">
+                        <img src="{{ asset('/images/close-icon.png') }}"  alt="閉じるアイコン" class="img-close-icon"/>
+                    </a>
+            </div>
+        @endif
         </div>
         
         <div class="right-contents">
-            <a class="register__link" href="/products/register">+ 商品を追加</a>
+            <p class="message">{{session('message')}}</p>
+            <a class="register__button" href="/products/register">+ 商品を追加</a>
             <div class="product-contents">
                 @foreach ($products as $product)
                 <div class="product-card">
                     <a href="/products/{{$product->id}}" class="product-link"></a>
                     <img src="{{ asset($product->image) }}"  alt="商品画像" class="img-content"/>
-                        <div class="detail-content">
+                        <div class="name-price">
                             <p>{{$product->name}}</p>
                             <p>{{$product->price}}</p>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
             <div class="pagination-content">
-            {{ $products->links('pagination::bootstrap-4')}}
+                {{ $products->appends(request()->query())->links('pagination::bootstrap-4') }}
             </div>
         </div>
+    </div>
 @endsection

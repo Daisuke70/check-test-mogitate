@@ -6,45 +6,45 @@
 
 @section('content')
 <div class="register-form">
-  <h2 class="register-form__heading content__heading">商品登録</h2>
+  <h1 class="register-form__heading content__heading">商品登録</h1>
 
   <div class="register-form__inner">
     <form class="register-form__form" action="/product/upload" method="post" enctype="multipart/form-data">
       @csrf
       <div class="register-form__group">
-        <label class="register-form__label" for="product">商品名
+        <label class="register-form__label" for="product_name">商品名
           <span class="register-form__required">必須</span>
         </label>
-        <input class="register-form__input" type="text" name="product" id="product" value="{{ old('product') }}" placeholder="商品名を入力">
+        <input class="register-form__input" type="text" name="product_name" id="name" value="{{ old('product_name') }}" placeholder="商品名を入力">
         <p class="register-form__error-message">
-          @error('product')
+          @error('product_name')
           {{ $message }}
           @enderror
         </p>
       </div>
 
       <div class="register-form__group">
-        <label class="register-form__label" for="price">値段
+        <label class="register-form__label" for="product_price">値段
           <span class="register-form__required">必須</span>
         </label>
-        <input class="register-form__input" type="text" name="price" id="price" value="{{ old('price') }}" placeholder="値段を入力">
+        <input class="register-form__input" type="text" name="product_price" id="product_price" value="{{ old('product_price') }}" placeholder="値段を入力">
         <p class="register-form__error-message">
-          @error('price')
+          @error('product_price')
           {{ $message }}
           @enderror
         </p>
       </div>
 
       <div class="register-form__group">
-        <label class="register-form__label" for="image">商品画像
+        <label class="register-form__label" for="product_image">商品画像
           <span class="register-form__required">必須</span>
         </label>
-        <label class="register-form-image__label" for="image">
+        <label class="register-form-image__label" for="product_image">
           <output id="list" class="image_output"></output>
-          <input type="file" id="image" class="image" name="image">
+          <input type="file" id="product_image" class="image" name="product_image">
         </label>
         <p class="register-form__error-message">
-          @error('image')
+          @error('product_image')
           {{ $message }}
           @enderror
         </p>
@@ -55,51 +55,25 @@
           <span class="register-form__required">必須</span>
           <span class="register-form__required-2">複数選択可</span>
         </label>
-        <div class="register-form__season-inputs">
-          <div class="register-form__season-option">
-            <label class="register-form__season-label">
-              <input class="register-form__season-input" name="season" type="radio" id="spring" value="1" {{
-                old('season')==1 ||old('season')}}>
-              <span class="register-form__season-text">春</span>
-            </label>
-          </div>
-          <div class="register-form__season-option">
-            <label class="register-form__season-label">
-              <input class="register-form__season-input" name="season" type="radio" id="summer" value="2" {{
-                old('season')==2 || old('season')}}>
-              <span class="register-form__season-text">夏</span>
-            </label>
-          </div>
-          <div class="register-form__season-option">
-            <label class="register-form__season-label">
-              <input class="register-form__season-input" name="season" type="radio" id="fall" value="3" {{
-                old('season')==3 || old('season')}}>
-              <span class="register-form__season-text">秋</span>
-            </label>
-          </div>
-          <div class="register-form__season-option">
-            <label class="register-form__season-label">
-              <input class="register-form__season-input" name="season" type="radio" id="winter" value="4" {{
-                old('season')==4 || old('season')}}>
-              <span class="register-form__season-text">冬</span>
-            </label>
-          </div>
-          </div>
+        @foreach ($seasons as $season)
+          <input type="checkbox" id="season" value="{{$season->id}}" name="product_season">
+          <label for="season">{{$season->name}}</label>
+        @endforeach
           <p class="register-form__error-message">
-            @error('season')
+            @error('product_season')
             {{ $message }}
             @enderror
           </p>
         </div>
 
       <div class="register-form__group">
-        <label class="register-form__label" for="description">
+        <label class="register-form__label" for="product_description">
           商品説明<span class="register-form__required">必須</span>
         </label>
-        <textarea class="register-form__textarea" name="description" id="" cols="30" rows="10"
-          placeholder="商品の説明を入力">{{ old('description') }}</textarea>
+        <textarea class="register-form__textarea" name="product_description" id="" cols="30" rows="10"
+          placeholder="商品の説明を入力">{{ old('product_description') }}</textarea>
         <p class="register-form__error-message">
-          @error('description')
+          @error('product_description')
           {{ $message }}
           @enderror
         </p>
@@ -112,7 +86,7 @@
     </form>
   </div>
   <script>
-        document.getElementById('image').onchange = function(event){
+        document.getElementById('product_image').onchange = function(event){
 
             initializeFiles();
 

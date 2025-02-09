@@ -13,21 +13,12 @@ class CreateProductSeasonTable extends Migration
      */
     public function up()
     {
-        Schema::create('product-season', function (Blueprint $table) {
-            $table->increments('id');
-            $table->bigInteger('product_id')->unsigned();
-            $table->bigInteger('season_id')->unsigned();
-            $table->timestamps();
- 
-            $table->foreign('product_id')
-                  ->references('id')
-                  ->on('products')
-                  ->onDelete('cascade');
- 
-            $table->foreign('season_id')
-                  ->references('id')
-                  ->on('seasons')
-                  ->onDelete('cascade');
+        Schema::create('product_season', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('product_id');
+            $table->foreignId('season_id');
+            $table->timestamp('created_at')->useCurrent()->nullable();
+            $table->timestamp('updated_at')->useCurrent()->nullable();
         });
     }
 
@@ -38,6 +29,6 @@ class CreateProductSeasonTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product-season');
+        Schema::dropIfExists('product_season');
     }
 }

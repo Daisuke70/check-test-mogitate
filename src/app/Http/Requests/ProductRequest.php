@@ -24,27 +24,27 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'product' => ['required'],
-            'price' => ['required', 'integer','between:0,10000'],
-            'season' => ['required'],
-            'description' => ['required', 'max:120'],
-            'image' => ['required', 'mimes:png,jpeg']
+            'product_name' => ['required'],
+            'product_price' => ['required', 'integer','between:0,10000'],
+            'product_season' => ['required'],
+            'product_description' => ['required', 'max:120'],
+            'product_image' => ['required', 'mimes:png,jpeg']
         ];
     }
 
     public function messages()
     {
         return [
-            'product.required' => '商品名を入力してください',
-            'price.required' => '値段を入力してください',
-            'price.numeric' => '数値で入力してください',
-            'price.min' => '0〜10000円以内で入力してください',
-            'price.max' => '0〜10000円以内で入力してください',
-            'season.required' => '季節を選択してください',
-            'description.required' => '商品説明を入力してください',
-            'description.max' =>'120文字以内で入力してください',
-            'image.required' => '商品画像を登録してください',
-            'image.mimes' => '「.png」または「.jpeg」形式でアップロードしてください'
+            'product_name.required' => '商品名を入力してください',
+            'product_price.required' => '値段を入力してください',
+            'product_price.numeric' => '数値で入力してください',
+            'product_price.min' => '0〜10000円以内で入力してください',
+            'product_price.max' => '0〜10000円以内で入力してください',
+            'product_season.required' => '季節を選択してください',
+            'product_description.required' => '商品説明を入力してください',
+            'product_description.max' =>'120文字以内で入力してください',
+            'product_image.required' => '商品画像を登録してください',
+            'product_image.mimes' => '「.png」または「.jpeg」形式でアップロードしてください'
         ];
     }
 }

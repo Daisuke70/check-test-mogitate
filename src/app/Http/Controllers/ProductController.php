@@ -29,14 +29,14 @@ class ProductController extends Controller
     {
         $dir = 'image';
 
-        $file_name = $request->file('image')->getClientOriginalName();
-        $request->file('image')->storeAs('public/' . $dir, $file_name);
+        $file_name = $request->file('product_image')->getClientOriginalName();
+        $request->file('product_image')->storeAs('public/' . $dir, $file_name);
 
         $product_data = new Product();
-        $product_data->product= $_POST["product"];
-        $product_data->price= $_POST["price"];
+        $product_data->name= $_POST["product_name"];
+        $product_data->price= $_POST["product_price"];
         $product_data->image= 'storage/' . $dir . '/' . $file_name;
-        $product_data->description= $_POST["description"];
+        $product_data->description= $_POST["product_description"];
         $product_data->save();
 
         $products = Product::all();
@@ -56,18 +56,49 @@ class ProductController extends Controller
     public function getSearch(Request $request)
     {
         $query = Product::query();
-        $keyword = $request->input('keyword');
-        if(!empty($keyword)) {
-        $query->where('name', 'LIKE', "%")->limit(10)->get();
-        }
-        
-        $products = $query->get();
+        $sort = $request->input('sort');
 
-        $sort = $request->query('sort', 'asc');
-        if (!in_array($sort, ['desc'])) {
-        $sort = 'asc';
+        if ($sort == "高い順に表示") {
+
+            $sort = "high_price";
+
         }
-        $products = Product::orderBy('price', $sort)->get();
+        elseif ($sort == "低い順に表示") {
+
+            $sort = "low_price";
+
+        }
+        else{
+
+            $sort = "";
+        }
+
+        if ($request->filled('keyword')) {
+
+            $keyword = $request->input('keyword');
+            $query->where('name','like','%'.$keyword.'%');
+
+        }
+
+        $query_products = $query->get();
+
+        if($sort == "high_price"){
+
+            $products = $query_products->sortByDesc('price');
+            $sort = "高い順に表示";
+
+        }elseif($sort == "low_price"){
+
+            $products = $query_products->sortBy('price');
+            $sort = "低い順に表示";
+
+
+        }else{
+
+            $products = $query_products;
+            $sort = "";
+
+        }
 
         $perPage = 6;
         $page = Paginator::resolveCurrentPage('page');
@@ -80,22 +111,40 @@ class ProductController extends Controller
         $products = new LengthAwarePaginator($pageData, $products->count(), $perPage, $page, $options);
 
         $seasons = Season::all();
-        return view('products')->with(compact('products', 'sort'));
+        return view('products')->with(compact('sort','products','seasons'));
     }
 
     public function postSearch(Request $request)
     {
-        $products = Product::query();
-        $keyword = $request->input('keyword');
-        if(!empty($keyword)) {
-        $products->where('name', 'LIKE', "%")->limit(10)->get();
+        $query = Product::query();
+        $sort = $request->input('sort');
+
+        if ($request->filled('keyword')) {
+
+            $keyword = $request->input('keyword');
+            $query->where('name','like','%'.$keyword.'%');
+
         }
 
-        $sort = $request->query('sort', 'asc');
-        if (!in_array($sort, ['desc'])) {
-        $sort = 'asc';
+        $query_products = $query->get();
+
+        if($sort == "high_price"){
+
+            $products = $query_products->sortByDesc('price');
+            $sort = "高い順に表示";
+
+        }elseif($sort == "low_price"){
+
+            $products = $query_products->sortBy('price');
+            $sort = "低い順に表示";
+
+
+        }else{
+
+            $products = $query_products;
+            $sort = "";
+
         }
-        $products = Product::orderBy('price', $sort)->get();
 
         $perPage = 6;
         $page = Paginator::resolveCurrentPage('page');
@@ -107,8 +156,11 @@ class ProductController extends Controller
 
         $products = new LengthAwarePaginator($pageData, $products->count(), $perPage, $page, $options);
 
+        $products->appends(['sort' => $sort]);
+
         $seasons = Season::all();
-        return view('products')->with(compact('products', 'sort'));
+
+        return view('products')->with(compact('sort','products','seasons'));
     }
 
 }

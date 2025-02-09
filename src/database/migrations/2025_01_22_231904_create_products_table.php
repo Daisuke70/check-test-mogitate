@@ -19,7 +19,8 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->string('image')->nullable();
             $table->text('description');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent()->nullable();
+            $table->timestamp('updated_at')->useCurrent()->nullable();
         });
     }
 
@@ -30,6 +31,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('products');
     }
 }
