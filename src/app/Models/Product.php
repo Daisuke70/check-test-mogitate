@@ -11,7 +11,7 @@ class Product extends Model
 
     public function seasons()
     {
-        return $this->belongsTo(Season::class,'product_season','product_id','season_id',);
+        return $this->belongsToMany(Season::class,'product_season','product_id','season_id',);
     }
 
     public function checkSeason($season,$product)
@@ -21,7 +21,7 @@ class Product extends Model
 
         $product_data = Product::find($product_id);
         $productSeasons = $product_data->seasons;
-
+        
         foreach ($productSeasons as $productSeason)
         {
             if($productSeason->id == $season_id)

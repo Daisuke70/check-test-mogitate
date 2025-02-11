@@ -9,9 +9,8 @@ class Season extends Model
 {
     use HasFactory;
 
-
     public function products()
     {
-        return $this->belongsTo(product::class);
+        return $this->belongsToMany(Product::class,'product_season', 'season_id', 'product_id');
     }
 }

@@ -20,3 +20,4 @@ Route::post('/product/upload', [ProductController::class, 'upload']);
 Route::get('/products/detail/{product_id}', [ProductController::class, 'getDetail']);
 Route::get('/products/search',[ProductController::class, 'getSearch']);
 Route::post('/products/search',[ProductController::class, 'postSearch']);
+Route::post('/products/{{$product->id}}/delete',[ProductController::class, 'postDelete']);

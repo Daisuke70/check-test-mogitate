@@ -10,7 +10,7 @@
         <h1>商品一覧</h1>
         <form class="search-form" action="/products/search" method="post">
         @csrf
-                <input type="text" name="keyword" class="keyword" placeholder="商品名で検索">
+                <input type="text" name="keyword" class="keyword" placeholder="商品名で検索" value="{{ old('keyword') }}">
                 <button type="submit" class="submit-button">検索</button>
                 <label class="select-label">価格順で表示</label>
                 <select class="select" name="sort" id="sort">

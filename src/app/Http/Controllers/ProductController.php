@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Season;
+use App\Models\ProductSeason;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Http\Requests\ProductRequest;
@@ -38,6 +39,12 @@ class ProductController extends Controller
         $product_data->image= 'storage/' . $dir . '/' . $file_name;
         $product_data->description= $_POST["product_description"];
         $product_data->save();
+
+
+        $product_season_data = new ProductSeason();
+        $product_season_data->product_id = $product_data->id;
+        $product_season_data->season_id = $request->input('season_id');
+        $product_season_data->save();
 
         $products = Product::all();
         $perPage = 6;
@@ -163,10 +170,20 @@ class ProductController extends Controller
         return view('products')->with(compact('sort','products','seasons'));
     }
 
+    public function postDelete($product_id)
+    {
+        $product = Product::find($product_id);
+        $product->delete();
+        $message = "製品の削除が完了しました。";
+        $products = Product::paginate(6);
+
+        return redirect('/products')->with(compact('products','message'));
+    }
+
     public function getDetail($product_id)
     {
         $product = product::find($product_id);
         $seasons = Season::all();
-        return view('detail', compact('product','seasons'));
+        return view('detail', compact('products','seasons'));
     }
 }
