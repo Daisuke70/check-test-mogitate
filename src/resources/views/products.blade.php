@@ -2,6 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/products.css')}}">
+<link rel="stylesheet" href="{{ asset('css/common.css')}}">
 @endsection
 
 @section('content')
@@ -13,11 +14,13 @@
                 <input type="text" name="keyword" class="keyword" placeholder="商品名で検索" value="{{ old('keyword') }}">
                 <button type="submit" class="submit-button">検索</button>
                 <label class="select-label">価格順で表示</label>
+                <div class="select-box">
                 <select class="select" name="sort" id="sort">
                     <option value="">価格で並べ替え</option>
                     <option value="high_price">高い順に表示</option>
                     <option value="low_price">低い順に表示</option>
                 </select>
+                </div>
         </form>
         @if (@isset($sort)&& $sort != "")
             <div class="sort_contents">

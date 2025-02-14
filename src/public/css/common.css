@@ -1,9 +1,14 @@
 .header {
     align-items: left;
     text-align: left;
-    font-family: cursive;
 }
 
+
 .header__heading {
-    font-size: 20px;
+    font-size: 30px;
+    font-family: "Abril Text", "Georgia", "Times New Roman", serif;
+    font-weight: lighter;
+    font-style: italic;
+    color: rgb(255, 200, 0);
 }
+

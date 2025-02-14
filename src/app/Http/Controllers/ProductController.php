@@ -170,13 +170,12 @@ class ProductController extends Controller
         return view('products')->with(compact('sort','products','seasons'));
     }
 
-    public function postDelete($product_id)
+    public function destroy($product_id)
     {
-        $product = Product::find($product_id);
+        $product = Product::findOrFail($product_id);
         $product->delete();
         $message = "製品の削除が完了しました。";
         $products = Product::paginate(6);
-
         return redirect('/products')->with(compact('products','message'));
     }
 
@@ -184,6 +183,28 @@ class ProductController extends Controller
     {
         $product = product::find($product_id);
         $seasons = Season::all();
-        return view('detail', compact('products','seasons'));
+        return view('detail', compact('product','seasons'));
+    }
+
+    public function update(ProductRequest $request, $product_id)
+    {
+        dd($request->all());
+        $product = Product::findOrFail($product_id);
+        $product->name = $request->input('product_name');
+        $product->price = $request->input('product_price');
+        $product->description = $request->input('product_description');
+
+        if ($request->hasFile('product_image')) {
+        if ($product->image && file_exists(public_path($product->image))) {
+            unlink(public_path($product->image));
+        }
+
+        $imagePath = $request->file('product_image')->store('products', 'public');
+        $product->image = 'storage/' . $imagePath;
+        }
+
+        $product->save();
+
+        return redirect('/products')->with('message', '商品情報を更新しました。');
     }
 }
