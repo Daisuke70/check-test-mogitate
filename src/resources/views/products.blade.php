@@ -25,9 +25,11 @@
         @if (@isset($sort)&& $sort != "")
             <div class="sort_contents">
                 <p class="searched_data">{{$sort}}</p>
+                <div class="close-content">
                     <a href="/products">
                         <img src="{{ asset('/images/close-icon.png') }}"  alt="閉じるアイコン" class="img-close-icon"/>
                     </a>
+                </div>
             </div>
         @endif
         </div>
@@ -42,7 +44,7 @@
                     <img src="{{ asset($product->image) }}"  alt="商品画像" class="img-content"/>
                         <div class="name-price">
                             <p>{{$product->name}}</p>
-                            <p>{{$product->price}}</p>
+                            <p>¥{{$product->price}}</p>
                         </div>
                     </div>
                 @endforeach
