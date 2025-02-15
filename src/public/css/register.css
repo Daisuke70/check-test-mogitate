@@ -1,57 +1,63 @@
 .content {
-    background-color: #e6e6e6;
+    background-color: #f5f5f5;
+}
+
+.register-form {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .register-form__heading{
-    text-align: center;
-}
-
-.register-form__inner{
-    display: flex;
-    justify-content: center;
+    padding-top: 60px;
+    margin-bottom: 35px;
 }
 
 .register-form__label {
     display: block;
-    margin-bottom: 8px;
+    margin-top: 25px;
+}
+
+.register-form__required{
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    padding: 3px 5px;
+    margin-left: 13px;
+    margin-bottom: 5px;
 }
 
 .register-form__input {
     display: block;
+    margin-top: 10px;
     padding: 8px 12px;
     width: 700px;
-    height: px;
     align-items: left;
-    color: #e6e6e6;
 }
 
-.register-form-image{
-    border: 1px solid;
-    width: 120px;
+::placeholder {
+    color: grey;
 }
 
-.register-form__season-inputs {
-    display: flex;
-    justify-content: left;
+.image{
+    margin-top: 15px;
 }
 
-.register-form__season-option {
-    margin-right: 50px;
+.reader_image{
+    width: 350px;
+    margin-top: 20px;
 }
 
-.contact-form__season-input {
-    position: absolute;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+
+.register-form__check{
+    color: red;
+    font-size: 13px;
+    margin-left: 10px;
 }
 
-.contact-form__season-text {
-    display: flex;
-    align-items: center;
-}
 
 .register-form__textarea{
-    width: 720px;
+    width: 700px;
     resize: none;
+    margin-top: 10px;
 }
