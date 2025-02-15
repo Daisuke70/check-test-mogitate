@@ -38,7 +38,7 @@
         <label class="register-form__label">季節<span class="register-form__required">必須</span><span class="register-form__check">複数選択可</span></label>
         @foreach ($seasons as $season)
           <input type="checkbox" id="season_id" value="{{$season->id}}" name="season_id">
-          <label for="season_id">{{$season->name}}</label>
+          <label for="season_id" class="season__label">{{$season->name}}</label>
         @endforeach
           <p class="register-form__error-message">
             @error('season_id')
@@ -56,7 +56,7 @@
         </p>
 
       <div class="register-form__button-content">
-        <a href= "/products" class="back">戻る</a>
+        <a href= "/products" class="button-back">戻る</a>
         <button type="submit" class="button-register">登録</button>
       </div>
     </form>
@@ -87,5 +87,4 @@
             document.getElementById('list').innerHTML = '';
         }
     </script>
-</div>
 @endsection
