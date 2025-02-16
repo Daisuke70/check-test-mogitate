@@ -1,5 +1,9 @@
-.products-contents {
+.content {
+    height: 950px;
     background-color: #f5f5f5;
+}
+
+.products-contents {
     display: flex;
 }
 
@@ -149,7 +153,6 @@
     display: flex;
     justify-content: center;
     margin-top: 10px;
-    margin-bottom: 100px;
 }
 
 .pagination {
@@ -161,7 +164,7 @@
     background-color: rgb(255, 200, 0);
     color: white;
     border-color: rgb(255, 200, 0);
-  }
+}
 
 .page-item {
     width: 30px;

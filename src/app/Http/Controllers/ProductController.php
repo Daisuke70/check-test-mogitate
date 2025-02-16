@@ -40,11 +40,14 @@ class ProductController extends Controller
         $product_data->description= $_POST["product_description"];
         $product_data->save();
 
-
-        $product_season_data = new ProductSeason();
-        $product_season_data->product_id = $product_data->id;
-        $product_season_data->season_id = $request->input('season_id');
-        $product_season_data->save();
+        if ($request->has('season_id')) {
+            foreach ($request->input('season_id') as $season_id) {
+                $product_season_data = new ProductSeason();
+                $product_season_data->product_id = $product_data->id;
+                $product_season_data->season_id = $season_id;
+                $product_season_data->save();
+            }
+        }
 
         $products = Product::all();
         $perPage = 6;

@@ -10,18 +10,17 @@
         <div class="left-contents">
         <h1>商品一覧</h1>
         <form class="search-form" action="/products/search" method="post">
-        @csrf
-                <input type="text" name="keyword" class="keyword" placeholder="商品名で検索" value="{{ old('keyword') }}">
-                <button type="submit" class="submit-button">検索</button>
-                <label class="select-label">価格順で表示</label>
-                <div class="select-box">
+            @csrf
+            <input type="text" name="keyword" class="keyword" placeholder="商品名で検索" value="{{ request('keyword') }}">
+            <button type="submit" class="submit-button">検索</button>
+            <label class="select-label">価格順で表示</label>
+            <div class="select-box">
                 <select class="select" name="sort" id="sort">
                     <option value="">価格で並べ替え</option>
-                    <option value="high_price">高い順に表示</option>
-                    <option value="low_price">低い順に表示</option>
+                    <option value="high_price" {{ request('sort') == 'high_price' ? 'selected' : '' }}>高い順に表示</option>
+                    <option value="low_price" {{ request('sort') == 'low_price' ? 'selected' : '' }}>低い順に表示</option>
                 </select>
-                </div>
-                
+            </div>
         </form>
         @if (@isset($sort)&& $sort != "")
             <div class="sort_contents">
