@@ -37,9 +37,8 @@ class ProductRequest extends FormRequest
         return [
             'product_name.required' => '商品名を入力してください',
             'product_price.required' => '値段を入力してください',
-            'product_price.numeric' => '数値で入力してください',
-            'product_price.min' => '0〜10000円以内で入力してください',
-            'product_price.max' => '0〜10000円以内で入力してください',
+            'product_price.integer' => '数値で入力してください',
+            'product_price.between' => '0〜10000円以内で入力してください',
             'season_id.required' => '季節を選択してください',
             'product_description.required' => '商品説明を入力してください',
             'product_description.max' =>'120文字以内で入力してください',

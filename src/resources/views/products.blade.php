@@ -21,6 +21,7 @@
                     <option value="low_price">低い順に表示</option>
                 </select>
                 </div>
+                
         </form>
         @if (@isset($sort)&& $sort != "")
             <div class="sort_contents">
@@ -33,7 +34,7 @@
             </div>
         @endif
         </div>
-        
+
         <div class="right-contents">
             <p class="message">{{session('message')}}</p>
             <a class="register__button" href="/products/register">+ 商品を追加</a>

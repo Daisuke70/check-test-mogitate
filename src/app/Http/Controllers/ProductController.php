@@ -174,9 +174,8 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($product_id);
         $product->delete();
-        $message = "製品の削除が完了しました。";
         $products = Product::paginate(6);
-        return redirect('/products')->with(compact('products','message'));
+        return redirect('/products')->with(compact('products'));
     }
 
     public function getDetail($product_id)

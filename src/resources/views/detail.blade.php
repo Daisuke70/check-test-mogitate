@@ -4,14 +4,15 @@
 <link rel="stylesheet" href="{{ asset('css/detail.css')}}">
 @endsection
 
+
 @section('content')
-<div class="all-contents">
+<div class="detail-contents">
     <form action="/products/{{$product->id}}/update" method ="POST" enctype="multipart/form-data">
         @method('PATCH')
         @csrf
             <div class="top-contents">
                 <div class="left-content">
-                    <p><span class="span-item">商品一覧></span>{{$product->name}}</p>
+                    <p><span class="span-item">商品一覧</span> > {{$product->name}}</p>
                     <img src="{{ asset($product->image) }}"  alt="商品画像" class="img-content"/>
                     <output id="list" class="image_output"></output>
                     <input type="file" id="product_image" class="image" name="product_image">
@@ -23,29 +24,31 @@
                 </div>
 
                 <div class="right-content">
-                    <label class="name-label">商品名</label>
+                    <label class="detail-label">商品名</label>
                     <input type="text" value="{{$product->name}}" name="product_name" class="text">
                     <p class="register-form__error-message">
                     @error('product_name')
                     {{ $message }}
                     @enderror
                     </p>
-                    <label class="price-label">値段</label>
+                    <label class="detail-label">値段</label>
                     <input type="text" value="{{$product->price}}" name="product_price" class="text">
                     <p class="register-form__error-message">
                     @error('product_price')
                     {{ $message }}
                     @enderror
                     </p>
-                    <label class="season-label">季節</label>
+                    <label class="detail-label">季節</label>
+                    <div class="season-container">
                     @foreach ($seasons as $season)
-                        <label for="season_id">{{$season->name}}</label>
                         @if($product->checkSeason($season,$product) == "no")
                             <input type="checkbox" id="season_id" value="{{$season->id}}">
                         @elseif($product->checkSeason($season,$product) == "yes")
                             <input type="checkbox" id="season_id" value="{{$season->id}}" checked>
                         @endif
+                        <label for="season_id" class="season-label">{{$season->name}}</label>
                     @endforeach
+                    </div>
                     <p class="register-form__error-message">
                     @error('season_id')
                     {{ $message }}
@@ -55,15 +58,15 @@
             </div>
 
             <div class="under-content">
-                <label class="description-label">商品説明</label>
-                <textarea cols="30" rows="5" name="product_description" class="product-description">{{$product->description}}</textarea>
+                <label class="detail-label">商品説明</label>
+                <textarea cols="30" rows="5" name="product_description" class="product-description__textarea">{{$product->description}}</textarea>
                 <p class="register-form__error-message">
                     @error('product_description')
                     {{ $message }}
                     @enderror
                     </p>
                 <div class="button-content">
-                    <a href="/products" class="back">戻る</a>
+                    <a href="/products" class="button-back">戻る</a>
                     <button type="submit" class="button-change">変更を保存</button>
                 </div>
             </div>

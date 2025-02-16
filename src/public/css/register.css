@@ -8,7 +8,7 @@
     margin-right: auto;
 }
 
-.register-form__heading{
+.register-form__heading {
     padding-top: 60px;
     margin-bottom: 35px;
 }
@@ -18,7 +18,7 @@
     margin-top: 25px;
 }
 
-.register-form__required{
+.register-form__required {
     background-color: red;
     color: white;
     font-size: 12px;
@@ -39,17 +39,17 @@
     color: grey;
 }
 
-.image{
+.image {
     margin-top: 15px;
 }
 
-.reader_image{
+.reader_image {
     width: 350px;
     margin-top: 20px;
 }
 
 
-.register-form__check{
+.register-form__check {
     color: red;
     font-size: 13px;
     margin-left: 10px;
@@ -75,7 +75,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-    background-color: black; /* 背景を黒に */
+    background-color: black;
 }
 
 input[type="checkbox"]:checked::after {
@@ -107,6 +107,7 @@ input[type="checkbox"]:checked::after {
 }
 
 .register-form__button-content {
+    width: 700px;
     text-align: center;
 }
 
@@ -118,4 +119,19 @@ input[type="checkbox"]:checked::after {
     background-color: #C0C0C0;
     border-radius: 5px;
     padding: 10px 15px;
+    margin-right: 5px;
+    margin-bottom: 100px;
+}
+
+.button-register {
+    display: inline-block;
+    text-decoration: none;
+    width: 180px;
+    color: black;
+    font-size: 16px;
+    background-color: rgb(255, 200, 0);
+    border: none;
+    border-radius: 5px;
+    margin-left: 5px;
+    padding: 10px 50px;
 }

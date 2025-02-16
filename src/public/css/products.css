@@ -1,15 +1,15 @@
-.products-contents{
+.products-contents {
     background-color: #f5f5f5;
     display: flex;
 }
 
-.left-contents{
+.left-contents {
     margin-top: 40px;
     margin-left: 50px;
     width: 300px;
 }
 
-.keyword{
+.keyword {
     width: 240px;
     height: 45px;
     padding-left: 15px;
@@ -18,7 +18,7 @@
     border-width: thin;
 }
 
-.submit-button{
+.submit-button {
     display: block;
     background-color: rgb(255, 200, 0);
     width: 255px;
@@ -29,7 +29,7 @@
     font-weight: bold;
 }
 
-.select-label{
+.select-label {
     display: inline-block;
     font-size: 20px;
     font-weight: bold;
@@ -52,7 +52,7 @@
     pointer-events: none;
 }
 
-.select{
+.select {
     display: inline-block;
     width: 255px;
     border-radius: 5px;
@@ -62,7 +62,7 @@
     appearance: none;
 }
 
-.sort_contents{
+.sort_contents {
     display: flex;
     width: 150px;
     height: 50px;
@@ -71,31 +71,31 @@
     border: rgb(255, 200, 0) solid;
 }
 
-.searched_data{
+.searched_data {
     margin-left: 10px;
     margin-top: 13px;
 }
 
-.close-content{
+.close-content {
     width: 20px;
     height: 20px;
 }
 
 
-.img-close-icon{
+.img-close-icon {
     width: 20px;
     height: 20px;
     margin-top: 16px;
     margin-left: 10px;
 }
 
-.right-contents{
+.right-contents {
     margin-top: 50px;
     margin-left: 30px;
     margin-right: 40px;
 }
 
-.register__button{
+.register__button {
     display: inline-block;
     text-decoration: none;
     color: black;
@@ -105,14 +105,14 @@
     margin-left: 900px;
 }
 
-.product-contents{
+.product-contents {
     display: flex;
     width: 970px;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
-.product-card{
+.product-card {
     width: 270px;
     border: none;
     margin-top: 20px;
@@ -120,12 +120,12 @@
     position: relative;
 }
 
-.img-content{
+.img-content {
     width: 330px;
     height: 230px;
 }
 
-.product-link{
+.product-link {
     position:absolute;
     top:0;
     left:0;
@@ -133,7 +133,7 @@
     height:100%;
 }
 
-.name-price{
+.name-price {
     display: flex;
     justify-content: space-between;
     width: 300px;
@@ -144,15 +144,15 @@
     color: black;
 }
 
-.pagination-content{
+.pagination-content {
     text-align: center;
     display: flex;
     justify-content: center;
     margin-top: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }
 
-.pagination{
+.pagination {
     display: flex;
     list-style: none;
 }
@@ -163,7 +163,7 @@
     border-color: rgb(255, 200, 0);
   }
 
-.page-item{
+.page-item {
     width: 30px;
     height: 28px;
     border-radius: 25px;
@@ -173,6 +173,6 @@
     padding-top: 2px;
 }
 
-.page-link{
+.page-link {
     text-decoration: none;
 }
