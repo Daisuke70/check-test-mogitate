@@ -4,7 +4,7 @@
 
 ## 環境構築
 Dockerビルド  
-1.git clone git@github.com:Daisuke70/check-test.git  
+1.git clone git@github.com:Daisuke70/check-test-mogitate.git  
 2.docker-compose up -d --build  
 
 Laravel環境構築  
