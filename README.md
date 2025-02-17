@@ -10,11 +10,11 @@ Laravel環境構築
 2.composer install  
 3.「.env.example」ファイルから新しく「.env」ファイルを作成し  
 4..envに以下の環境変数を追加  
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=laravel_db
-DB_USERNAME=laravel_user
+DB_CONNECTION=mysql  
+DB_HOST=mysql  
+DB_PORT=3306  
+DB_DATABASE=laravel_db  
+DB_USERNAME=laravel_user  
 DB_PASSWORD=laravel_pass  
 5.アプリケーションキーの作成  
 php artisan key:generate  
